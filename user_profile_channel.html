@@ -1,0 +1,72 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>"
+<link rel="stylesheet" type="text/css" href="app.css">
+$(document).ready(function() {
+    var windowH =  $(window).height();
+    $('#main_container, #overlay').height(windowH);
+    $(window).resize(function () {
+        var windowH =  $(window).height();
+        $('#main_container, #overlay').height(windowH);
+    });
+});
+<script>
+    var handleClick = function(item) {
+        console.log( 'clicked', item );
+        $('#message').html ("Clicked " + item);
+    };
+</script>
+</head>
+<body>
+<h1> Hello Dhana </h1>
+<div id="main_container ">
+    <video id="video" width="" height="" loop="loop" autoplay="" controls="none">
+      <source src="SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+    <div id="overlay">
+        <div id="menu" class="left-menu">
+            <div class="btn-group-vertical" role="group" aria-label="menu-button-group" style="top: 75px;">
+                <button type="button" class="btn btn-default transparent" onclick="handleClick('Home')">
+                    <i class="fa fa-home fa-3x" aria-hidden="true"></i>
+                    <p>Home</p>                    
+                </button>
+                <button type="button" class="btn btn-default transparent" onclick="handleClick('Feed')">
+                    <i class="fa fa-list fa-3x" aria-hidden="true"></i>
+                    <p>Feed</p>                    
+                </button>
+                <button type="button" class="btn btn-default transparent" onclick="handleClick('Upload')">
+                    <i class="fa fa-upload fa-3x" aria-hidden="true"></i>
+                    <p>Upload</p>                    
+                </button>
+                <button type="button" class="btn btn-default transparent" onclick="handleClick('Record')">
+                    <i class="fa fa-dot-circle-o fa-3x" aria-hidden="true"></i>
+                    <p>Record</p>                    
+                </button>
+                <button type="button" class="btn btn-default transparent" onclick="handleClick('Settings')">
+                    <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                    <p>Settings</p>                    
+                </button>
+                <button type="button" class="btn btn-default transparent" onclick="handleClick('Settings')">
+                    <i class="fa fa-cog fa-3x" aria-hidden="true"></i>
+                    <p>Settings</p>                    
+                </button>
+                <button type="button" class="btn btn-default transparent" onclick="handleClick('About')">
+                    <i class="fa fa-info-circle fa-3x" aria-hidden="true"></i>
+                    <p>About</p>                    
+                </button>
+            </div>
+        </div>
+ </div>
+ <div id="content">
+     <span id="message">Message</span>
+</div>
+</div>
+
+</body>
+</html>
+
+
