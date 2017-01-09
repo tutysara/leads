@@ -5,15 +5,37 @@
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>"
 <link rel="stylesheet" type="text/css" href="app.css">
-$(document).ready(function() {
-    var windowH =  $(window).height();
-    $('#main_container, #overlay').height(windowH);
-    $(window).resize(function () {
-        var windowH =  $(window).height();
-        $('#main_container, #overlay').height(windowH);
-    });
-});
+
 <script>
+
+    var resize_layout = function(){
+        var windowH =  $(window).height();
+        var windowW =  $(window).width();
+        $('#main_container, #overlay').height(windowH);
+        $('#video').height(windowH);
+        $('#video').width(windowW);
+        var number_of_buttons = 8;
+        var padding = 0;
+        var buttonH = (windowH - padding)/number_of_buttons;
+        $('#menu-bar > button.btn').height(buttonH);
+        console.log("setting window height",windowH, buttonH);
+    }
+
+    $(document).ready(function() {
+        $(window).bind('load resize orientationchange', function () {
+            resize_layout();
+        });
+    });
+
+
+    var video_clicked = function() {
+        console.log('video_clicked', this); 
+            if (this.paused) {
+                this.play();
+            } else {
+                this.pause();
+            }
+    };
     var handleClick = function(item) {
         console.log( 'clicked', item );
         $('#message').html ("Clicked " + item);
@@ -22,46 +44,53 @@ $(document).ready(function() {
 </head>
 <body>
 <div id="main_container ">
-    <video id="video" width="" height="" loop="loop" autoplay="" controls="none">
+    <video  id="video" style="object-fit: fill;" autoplay onclick="video_clicked()">
       <source src="SampleVideo_1280x720_1mb.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
     <div id="overlay">
         <div id="menu" class="left-menu">
-            <div class="btn-group-vertical" role="group" aria-label="menu-button-group" style="top: 75px;">
+            <div id="menu-bar"class="btn-group-vertical" role="group" aria-label="menu-button-group">
                 <button type="button" class="btn btn-default transparent" onclick="handleClick('Home')">
-                    <i class="fa fa-home fa-3x" aria-hidden="true"></i>
-                    <p>Home</p>                    
+                    <i class="fa fa-home fa-3x fa-inverse" aria-hidden="true"></i>
+                    <p class="text-prop">Home</p>                    
                 </button>
                 <button type="button" class="btn btn-default transparent" onclick="handleClick('Feed')">
-                    <i class="fa fa-list fa-3x" aria-hidden="true"></i>
-                    <p>Feed</p>                    
+                    <i class="fa fa-list fa-3x fa-inverse" aria-hidden="true"></i>
+                    <p class="text-prop">Feed</p>                    
                 </button>
                 <button type="button" class="btn btn-default transparent" onclick="handleClick('Upload')">
-                    <i class="fa fa-upload fa-3x" aria-hidden="true"></i>
-                    <p>Upload</p>                    
+                    <i class="fa fa-upload fa-3x fa-inverse" aria-hidden="true"></i>
+                    <p class="text-prop">Upload</p>                    
                 </button>
                 <button type="button" class="btn btn-default transparent" onclick="handleClick('Record')">
-                    <i class="fa fa-dot-circle-o fa-3x" aria-hidden="true"></i>
-                    <p>Record</p>                    
+                    <i class="fa fa-dot-circle-o fa-3x fa-inverse" aria-hidden="true"></i>
+                    <p class="text-prop">Record</p>                    
                 </button>
                 <button type="button" class="btn btn-default transparent" onclick="handleClick('Settings')">
-                    <i class="fa fa-user fa-3x" aria-hidden="true"></i>
-                    <p>Settings</p>                    
+                    <i class="fa fa-user fa-3x fa-inverse" aria-hidden="true"></i>
+                    <p class="text-prop">Settings</p>                    
                 </button>
                 <button type="button" class="btn btn-default transparent" onclick="handleClick('Settings')">
-                    <i class="fa fa-cog fa-3x" aria-hidden="true"></i>
-                    <p>Settings</p>                    
+                    <i class="fa fa-cog fa-3x fa-inverse" aria-hidden="true"></i>
+                    <p class="text-prop">Settings</p>                    
                 </button>
                 <button type="button" class="btn btn-default transparent" onclick="handleClick('About')">
-                    <i class="fa fa-info-circle fa-3x" aria-hidden="true"></i>
-                    <p>About</p>                    
+                    <i class="fa fa-info-circle fa-3x fa-inverse" aria-hidden="true"></i>
+                    <p class="text-prop">About</p>                    
                 </button>
             </div>
         </div>
  </div>
  <div id="content">
      <span id="message">Message</span>
+
+     <div id="moreinfo">
+         <div>
+            <span>SCROLL FOR MORE INFO</span>
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+         </div>
+    </div>
 </div>
 </div>
 
