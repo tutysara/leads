@@ -36,6 +36,15 @@ left: 0px;
  z-index: 9998; 
 }
 #menu > div > button.transparent {
-    background: transparent;
+/*    background: transparent;*/
+      background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1)); 
+}
+
+#main_container > video.stretch{ 
+    object-fit: fill;
+}
+#overlay p.text-prop {
+    font-weight: bold;
+    color:#fff; 
 }
 
